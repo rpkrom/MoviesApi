@@ -23,7 +23,7 @@ namespace MoviesApi.Services
 
         public void Add(Movie movie)
         {
-            _context.Movies.Add(movie);
+            _context.Add(movie);
         }
 
         public async Task<Movie> Find(int id)
@@ -40,14 +40,14 @@ namespace MoviesApi.Services
         {
             _context.Entry(movie).State = EntityState.Modified;
 
-            await Save();
+            await _context.SaveChangesAsync(); 
 
             return movie;
         }
 
         public void Delete(Movie movie)
         {
-            _context.Movies.Remove(movie);
+            _context.Remove(movie);
         }
 
         public bool MovieExists(int id)

@@ -1,46 +1,37 @@
-using Moq;
+using FakeItEasy;
+using Microsoft.AspNetCore.Mvc;
 using MoviesApi.Controllers;
 using MoviesApi.Models;
 using MoviesApi.Services;
-using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace MoviesTests
 {
-    public class Tests
+    public class MovieControllerTests
     {
-        MoviesService mService;
-        MoviesDbContext dbContext;
-
-        readonly Mock<MoviesDbContext> mockDbContext = new Mock<MoviesDbContext>();
-        readonly Mock<IMoviesService> mockService = new Mock<IMoviesService>();
-
-
-        [SetUp]
-        public void Setup()
-        {   
-            mService = new MoviesService(mockDbContext.Object);
-        }
-
-        [Test]
-        public void Test1()
+        [Fact]
+        public async void GetAllMovies_Returns_OkResult_NotNull()
         {
-            var testMovies = GetTestMovies();
+            // Arrange
+            var dataStore = A.Fake<IMoviesService>();
+            A.CallTo(() => dataStore.FindAll()).Returns(Task.FromResult(GetTestMovies()));
+            var moviesController = new MoviesController(dataStore);
 
-            foreach (var item in testMovies)
-            {
-                mService.Add(item);
-            }
+            // Act
+            var actionResult = await moviesController.GetMovies();
 
-            mService.Save();
+            // Assert
+            var result = actionResult.Result as OkObjectResult;
+            var returnMovies = result.Value as IEnumerable<Movie>;
 
-            var allmovies = mService.FindAll();
+            Assert.Equal(GetTestMovies().Count, returnMovies.Count());
+            Assert.NotNull(returnMovies);
 
-            Assert.IsTrue(allmovies.Result.Count == testMovies.Count);
-
-            Assert.Pass();
         }
-
 
         private List<Movie> GetTestMovies()
         {

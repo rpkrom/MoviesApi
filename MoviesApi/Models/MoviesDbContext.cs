@@ -6,6 +6,7 @@ namespace MoviesApi.Models
     {
         public DbSet<Movie> Movies { get; set; }
 
+        public MoviesDbContext() { }
 
         public MoviesDbContext(DbContextOptions<MoviesDbContext> options) : base(options)
         {
