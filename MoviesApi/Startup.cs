@@ -32,7 +32,9 @@ namespace MoviesApi
 
             services.AddControllers();
 
-            services.AddScoped<IMoviesService, MoviesService>();
+            services.AddScoped<IMoviesService, MoviesService>(); // DI of MovieService
+            services.AddScoped<ITheaterService, TheaterService>(); // DI of TheaterService
+            services.AddScoped<IShowtimeService, ShowtimeService>(); // DI of ShowtimeService
 
             services.AddDbContext<MoviesDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MoviesDbConnectionString")));
 

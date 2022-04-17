@@ -1,4 +1,5 @@
-﻿using MoviesApi.Models;
+﻿using MoviesApi.Helpers;
+using MoviesApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,19 @@ namespace MoviesApi.Services
 
         public Task<Movie> Find(int id);
 
-        public Task<List<Movie>> FindAll();
+        public List<Movie> FindAll();
+
+        public PagedList<Movie> FindAll(MovieParameters movieParameters);
 
         public Task<Movie> Update(Movie movie);
         
         public void Delete(Movie movie);
 
         public bool MovieExists(int id);
+
+        public List<Movie> MoviesByTheaterId(int theaterId);
+
+        public List<Movie> MoviesByShowtimeTheaterId(int theaterId);
 
     }
 }
