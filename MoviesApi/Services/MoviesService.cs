@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
 using MoviesApi.Helpers;
-using MoviesApi.Models;
+using MoviesApi.Entity.Models;
+using MoviesApi.Entity.DataContext;
 
 namespace MoviesApi.Services
 {

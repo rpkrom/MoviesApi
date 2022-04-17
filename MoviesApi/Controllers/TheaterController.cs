@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MoviesApi.Models;
+using MoviesApi.Entity.Models;
 using MoviesApi.Services;
 using Newtonsoft.Json;
 using System.Collections.Generic;

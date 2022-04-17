@@ -1,5 +1,5 @@
 ﻿using MoviesApi.Helpers;
-using MoviesApi.Models;
+using MoviesApi.Entity.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
-﻿using MoviesApi.Models;
+﻿using MoviesApi.Entity.Models;
+using MoviesApi.Entity.DataContext;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

@@ -1,7 +1,7 @@
 using FakeItEasy;
 using Microsoft.AspNetCore.Mvc;
 using MoviesApi.Controllers;
-using MoviesApi.Models;
+using MoviesApi.Entity.Models;
 using MoviesApi.Services;
 using System;
 using System.Collections.Generic;

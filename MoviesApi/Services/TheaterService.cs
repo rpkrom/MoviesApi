@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MoviesApi.Helpers;
-using MoviesApi.Models;
+using MoviesApi.Entity.Models;
+using MoviesApi.Entity.DataContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
