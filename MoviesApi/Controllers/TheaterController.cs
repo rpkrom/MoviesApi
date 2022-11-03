@@ -74,7 +74,7 @@ namespace MoviesApi.Controllers
         private List<Movie> GetMoviesByTheater(Theater theater)
         {
             var movies = _moviesService.MoviesByTheaterId(theater.Id);
-            //TODOL: stub out showtime service
+            //TODOL: stub out showtime service below
             //var movies2 = _moviesService.MoviesByShowtimeTheaterId(theater.Id);
 
             return movies;
