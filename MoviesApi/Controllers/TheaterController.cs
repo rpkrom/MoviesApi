@@ -26,7 +26,7 @@ namespace MoviesApi.Controllers
             _showtimeService = showtimeService;
         }
 
-        // GET: api/Movies
+        // GET: api/Theaters
         [HttpGet]
         public ActionResult<IEnumerable<Theater>> GetTheaters([FromQuery] MovieParameters movieParameters)
         {
@@ -53,7 +53,7 @@ namespace MoviesApi.Controllers
             return Ok(theaters);
         }
 
-        // GET: api/Movies/5
+        // GET: api/Theaters/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Theater>> GetTheater(int id)
         {
@@ -73,13 +73,14 @@ namespace MoviesApi.Controllers
 
         private List<Movie> GetMoviesByTheater(Theater theater)
         {
-            //var movies = _moviesService.MoviesByTheaterId(theater.Id);
-            var movies2 = _moviesService.MoviesByShowtimeTheaterId(theater.Id);
+            var movies = _moviesService.MoviesByTheaterId(theater.Id);
+            //TODOL: stub out showtime service
+            //var movies2 = _moviesService.MoviesByShowtimeTheaterId(theater.Id);
 
-            return movies2;
+            return movies;
         }
 
-        // PUT: api/Movies/5
+        // PUT: api/Theaters/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMovie(int id, Theater theater)
@@ -108,7 +109,7 @@ namespace MoviesApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Movies
+        // POST: api/Theaters
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Theater>> PostMovie(Theater theater)
@@ -119,7 +120,7 @@ namespace MoviesApi.Controllers
             return CreatedAtAction("GetTheater", new { id = theater.Id }, theater);
         }
 
-        //PATCH: api/Movies/{id}
+        //PATCH: api/Theaters/{id}
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchTheater(int id, JsonPatchDocument<Theater> theaterUpdates)
         {
@@ -137,9 +138,9 @@ namespace MoviesApi.Controllers
         }
 
 
-        // DELETE: api/Movies/5
+        // DELETE: api/Theaters/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMovie(int id)
+        public async Task<IActionResult> DeleteTheater(int id)
         {
             var theater = await _theatersService.Find(id);
             if (theater == null)

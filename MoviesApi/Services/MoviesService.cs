@@ -87,9 +87,9 @@ namespace MoviesApi.Services
 
         public List<Movie> MoviesByShowtimeTheaterId(int theaterId)  // Proper way to filter // TODO: Move this to ShowtimeService
         {
-            var sql = (from mo in _context.Movies
-                       join st in _context.Showtimes on mo.Id equals st.MovieId
-                       where st.TheaterId == theaterId
+            var sql = (from mo in _context.Movies where mo.TheaterId == theaterId
+                       //join st in _context.Showtimes on mo.Id equals st.MovieId
+                       //where st.TheaterId == theaterId
                        select mo).ToList();
 
             return sql;
